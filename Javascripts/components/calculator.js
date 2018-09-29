@@ -1,14 +1,9 @@
-const printToDom = (stringToPrint, elementId) => {
-    const selectedDiv = document.getElementById(elementId);
-    selectedDiv.innerHTML = stringToPrint;
-};
+import {printToDom} from  '../helpers/util.js';
+import {multiply} from '../helpers/maths.js';
 
-const multiply = (n1, n2) => {
-    return n1 * n2;
-};
+
 
 const calculate = (num1, num2, mathType) => {
-
     let answer = 0;
     switch(mathType){
         case 'multiply':
@@ -29,6 +24,8 @@ const calculate = (num1, num2, mathType) => {
    printToDom(answer, 'result');
 };
 
-calculate(4, 2, 'multiply');
+export {calculate};
+
+
 
 // console.log(calculate(4, 2, 'multiply')); 
