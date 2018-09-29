@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const printToDom = (stringToPrint, elementId) => {
     const selectedDiv = document.getElementById(elementId);
     selectedDiv.innerHTML = stringToPrint;
@@ -32,3 +33,6 @@ const calculate = (num1, num2, mathType) => {
 calculate(4, 2, 'multiply');
 
 // console.log(calculate(4, 2, 'multiply')); 
+=======
+console.log("hello world");
+>>>>>>> 1bc51b4b7132d8acd982ebae1305ff8c676b1381
