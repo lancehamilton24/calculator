@@ -1,47 +1,56 @@
-<<<<<<< HEAD:Javascripts/components/calculator.js
-import {printToDom} from  '../helpers/util.js';
-import {multiply, divide, add, subtract} from '../helpers/maths.js';
-// import {divide} from '../helpers/maths.js';
-=======
-<<<<<<< HEAD
-const printToDom = (stringToPrint, elementId) => {
-    const selectedDiv = document.getElementById(elementId);
-    selectedDiv.innerHTML = stringToPrint;
-};
->>>>>>> master:main.js
+import {printToDom} from '../helpers/util.js';
+import {add, divide, multiply, subtract} from '../helpers/maths.js';
 
-
-
-const calculate = (num1, num2, mathType) => {
-    let answer = 0;
-    switch(mathType){
-        case 'multiply':
-            answer = multiply(num1, num2);
-            break;
-        case 'divide':
-           answer = divide(num1, num2); 
-            break;
-        case 'add':
-            answer = add(num1, num2);
-            break;
-        case 'subtract':
-            answer = subtract(num1, num2);
-            break;
-        default:
-            answer = 'nope';
-    }
-   printToDom(answer, 'result');
+const calc = {
+  firstNumber: '',
+  secondNumber: '',
+  mathType: '',
+  display: ''
 };
 
-export {calculate};
+const calculate = () => {
+  let answer = 0;
+  switch(calc.mathType){
+    case 'multiply':
+      answer = multiply(calc.firstNumber, calc.secondNumber);
+      break;
+    case 'divide':
+      answer = divide(calc.firstNumber, calc.secondNumber);
+      break;
+    case 'add':
+      answer = add(calc.firstNumber, calc.secondNumber);
+      break;
+    case 'subtract':
+      answer = subtract(calc.firstNumber, calc.secondNumber);
+      break;
+    default:
+      answer = 'nope';
+  }
+  setDisplay(answer);
+};
+
+const setDisplay = (someNumber) => {
+  calc.display = someNumber;
+  printToDom(calc.display, 'result');
+};
+
+const setMathType = (newMathType) => {
+  calc.mathType = newMathType;
+};
 
 
+const initialDisplay = () => {
+  printToDom(0, 'result');
+};
 
-<<<<<<< HEAD:Javascripts/components/calculator.js
-// console.log(calculate(4, 2, 'multiply')); 
-=======
-// console.log(calculate(4, 2, 'multiply')); 
-=======
-console.log("hello world");
->>>>>>> 1bc51b4b7132d8acd982ebae1305ff8c676b1381
->>>>>>> master:main.js
+const addNumber = (num) => {
+  if(calc.mathType === '') {
+    calc.firstNumber += num;
+    setDisplay(calc.firstNumber);
+  } else {
+    calc.secondNumber += num;
+    setDisplay(calc.secondNumber);
+  }
+};
+
+export {calculate, addNumber, initialDisplay, setMathType};
